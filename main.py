@@ -4,9 +4,10 @@ from os import walk
 import os
 import base64
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-
+cors = CORS(app)
 
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -56,15 +57,15 @@ def imager(prop):
     hand = prop["hands"]
     access = prop["access"]
     head = prop['head']
+    body = prop["body"]
 
     img = Image.new("RGB", (100, 100), (255, 255, 255))
 
     try:
-        body = prop["body"]
         i = Image.open(body)
         img.paste(i, (0, 0), i)
         img.save("bodier.png")
-    except RuntimeError:
+    except AttributeError:
         img.save("bodier.png")
 
     try:
@@ -72,7 +73,7 @@ def imager(prop):
         j = Image.open(face)
         img1.paste(j, (0, 0), j)
         img1.save("facier.png")
-    except RuntimeError:
+    except AttributeError:
         img1 = Image.open("bodier.png")
         img1.save("facier.png")
 
@@ -81,7 +82,7 @@ def imager(prop):
         k = Image.open(hand)
         img2.paste(k, (0, 0), k)
         img2.save("handier.png")
-    except RuntimeError:
+    except AttributeError:
         img2 = Image.open("facier.png")
         img2.save("handier.png")
 
@@ -90,7 +91,7 @@ def imager(prop):
         lop = Image.open(access)
         img3.paste(lop, (0, 0), lop)
         img3.save("accessier.png")
-    except RuntimeError:
+    except AttributeError:
         img3 = Image.open("handier.png")
         img3.save("accessier.png")
 
@@ -98,7 +99,7 @@ def imager(prop):
         img4 = Image.open("accessier.png")
         m = Image.open(head)
         img4.paste(m, (0, 0), m)
-    except RuntimeError:
+    except AttributeError:
         img4 = Image.open("accessier.png")
 
     img4.save("tester.png")
@@ -107,11 +108,12 @@ def imager(prop):
     os.remove("facier.png")
     os.remove("handier.png")
     os.remove("accessier.png")
-    os.remove("tester.png")
+    
 
     with open("tester.png", "rb") as image_file:
         encoded_string = base64.b64encode(image_file.read())
 
+    os.remove("tester.png")
     return encoded_string
 
 
@@ -158,24 +160,27 @@ def prop_maker(data):
     return prop
 
 
-@app.route('/bear', methods=['POST'])
+@app.route('/bear', methods=['POST', 'OPTIONS'])
+@cross_origin()
 def bear_maker():
-    request.get_json(force=True, silent=True)
-    data = request.json
+    request.get_json(force=False, silent=True)
+    data = request.json["data"]
     prop = prop_maker(data)
     # files = filer()
-    # return files
-    # return prop
+    # # return files
+    # # return prop
     image = imager(prop)
     #
     resp = {
         "status": True,
         "data": image.decode("utf-8")
+        # "data":request.json
     }
     return resp
 
 
-@app.route('/show', methods=["GET"])
+@app.route('/show', methods=["GET", "OPTIONS"])
+@cross_origin()
 def show_map():
     files = filer()
     return files

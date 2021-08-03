@@ -1,0 +1,7 @@
+{
+  "name": "brypto_GUI",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

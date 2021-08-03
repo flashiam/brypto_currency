@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "brypto_GUI",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
