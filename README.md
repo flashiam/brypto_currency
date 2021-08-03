@@ -33,4 +33,22 @@
     "status":True,
     "data": (Base64 encoded image string)
     }
+   
+    #7. Brypto Maker - GUI to create Bears
+
+    #8. To start the GUI, opem brypto_GUI folder and run
+
+    # npm i
     
+    #9. then to start the application in localhost:
+      
+     #ionic serve
+     
+     #10. Make sure the Python app is running on the same machine at port 8888
+     
+     # And Viola:
+   
+    ![image](https://user-images.githubusercontent.com/69477480/127954615-06cb376d-e894-42c1-bda0-fc85d372c894.png)
+    
+    # (GUI to create bears)
+
