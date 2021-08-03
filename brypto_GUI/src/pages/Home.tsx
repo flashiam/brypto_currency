@@ -49,7 +49,7 @@ const Home: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen color="dark">
         <IonSegment>
-        <IonCard style={{width:"400px", height:"300px"}}>
+        <IonCard style={{width:"400px", height:"350px"}}>
       
           <IonCardHeader>
             <IonRow>
@@ -58,17 +58,17 @@ const Home: React.FC = () => {
             <IonList lines="none">
             <IonItem>
               <IonRow>
-                <IonCol size="9">
+                <IonCol size="10">
                 {data.body.value==0?
-              <IonCardTitle style={{fontSize:"0.6rem"}}>
+              <IonText style={{fontSize:"0.6rem"}}>
                 Body
-              </IonCardTitle>
+              </IonText>
               :<IonText style={{fontSize:"0.6rem"}}>{data.body.value}</IonText>
               }
                 </IonCol>
                 <IonCol size="2">
                   {data.body.value !==0?
-                  <IonIcon icon={closeOutline} size="large" onClick={()=>{
+                  <IonIcon icon={closeOutline} size="small" onClick={()=>{
                     setData((data:any) => ({
                       ...data,
                       body: {
@@ -87,36 +87,120 @@ const Home: React.FC = () => {
               
               </IonItem>
               <IonItem>
-              {data.head.value==0?
-              <IonLabel style={{fontSize:"0.6rem"}}>
-                Head
-              </IonLabel>
-              :<IonText style={{fontSize:"0.6rem"}}>{data.head.value}</IonText>
-              }
-              </IonItem>
-              <IonItem>
-            {data.hands.value==0?
-              <IonLabel style={{fontSize:"0.6rem"}}>
-                Hands
-              </IonLabel>
-              :<IonText style={{fontSize:"0.6rem"}}>{data.hands.value}</IonText>
-              }
-              </IonItem>
-              <IonItem>
-            {data.access.value==0?
-              <IonLabel style={{fontSize:"0.6rem"}}>
-                Access
-              </IonLabel>
-              :<IonText style={{fontSize:"0.6rem"}}>{data.access.value}</IonText>
-              }
-              </IonItem>
-              <IonItem>
-            {data.face.value==0?
-              <IonLabel style={{fontSize:"0.6rem"}}>
+              <IonRow>
+                <IonCol size="10">
+                {data.face.value==0?
+              <IonText style={{fontSize:"0.6rem"}}>
                 Face
-              </IonLabel>
+              </IonText>
               :<IonText style={{fontSize:"0.6rem"}}>{data.face.value}</IonText>
               }
+                </IonCol>
+                <IonCol size="2">
+                  {data.face.value !==0?
+                  <IonIcon icon={closeOutline} size="small" onClick={()=>{
+                    setData((data:any) => ({
+                      ...data,
+                      face: {
+                        ...data.face,
+                        value: 0,
+                        key: 0
+                      }
+                    }
+                      ));
+                    }}></IonIcon>:
+                    null
+                  }
+                  
+                </IonCol>
+              </IonRow>
+              </IonItem>
+              <IonItem>
+              <IonRow>
+                <IonCol size="10">
+                {data.access.value==0?
+              <IonText style={{fontSize:"0.6rem"}}>
+                Access
+              </IonText>
+              :<IonText style={{fontSize:"0.6rem"}}>{data.access.value}</IonText>
+              }
+                </IonCol>
+                <IonCol size="2">
+                  {data.access.value !==0?
+                  <IonIcon icon={closeOutline} size="small" onClick={()=>{
+                    setData((data:any) => ({
+                      ...data,
+                      access: {
+                        ...data.access,
+                        value: 0,
+                        key: 0
+                      }
+                    }
+                      ));
+                    }}></IonIcon>:
+                    null
+                  }
+                  
+                </IonCol>
+              </IonRow>
+              </IonItem>
+              <IonItem>
+              <IonRow>
+                <IonCol size="10">
+                {data.hands.value==0?
+              <IonText style={{fontSize:"0.6rem"}}>
+                Hands
+              </IonText>
+              :<IonText style={{fontSize:"0.6rem"}}>{data.hands.value}</IonText>
+              }
+                </IonCol>
+                <IonCol size="2">
+                  {data.hands.value !==0?
+                  <IonIcon icon={closeOutline} size="small" onClick={()=>{
+                    setData((data:any) => ({
+                      ...data,
+                      hands: {
+                        ...data.hands,
+                        value: 0,
+                        key: 0
+                      }
+                    }
+                      ));
+                    }}></IonIcon>:
+                    null
+                  }
+                  
+                </IonCol>
+              </IonRow>
+              </IonItem>
+              <IonItem>
+              <IonRow>
+                <IonCol size="10">
+                {data.head.value==0?
+              <IonText style={{fontSize:"0.6rem"}}>
+                Head
+              </IonText>
+              :<IonText style={{fontSize:"0.6rem"}}>{data.head.value}</IonText>
+              }
+                </IonCol>
+                <IonCol size="2">
+                  {data.head.value !==0?
+                  <IonIcon icon={closeOutline} size="small" onClick={()=>{
+                    setData((data:any) => ({
+                      ...data,
+                      head: {
+                        ...data.head,
+                        value: 0,
+                        key: 0
+                      }
+                    }
+                      ));
+                    }}></IonIcon>:
+                    null
+                  }
+                  
+                </IonCol>
+              </IonRow>
               </IonItem>
           </IonList>
           </IonCol>
